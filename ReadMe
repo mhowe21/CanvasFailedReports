@@ -1,0 +1,20 @@
+This script will scan a Canvas instance for the last run item of each report and print out a list of failed reports. 
+You can run the report for all sub accounts in canvas by selecting the yes option when the program prompts for "Would you like to scan reports in all sub accounts" By default only the root account will be scanned. 
+
+In order to run the script:
+Prerequisites:
+1. Make sure you are running the latest version of python3 that can be downloaded from https://www.python.org/downloads/ 
+2. Have PIP installed with your python installation. The script will use the requests library and attempt to install it if you do not already have it with PIP. 
+3. You must have a valid API token for the instance you are attempting to run 
+
+Usage:
+1. Execute the script from your terminal by navigating to its directory. Once there type Python (if you have multiple versions installed type Python3) a space and then the name of the script. 
+2. The Script will prompt you for your Canvas API token. Paste it and hit enter. 
+3. The Script will then prompt you for your canvas domain. Enter it like so "yourdomain.instructure.com" (without the quotes) and hit enter. 
+4. The script will then prompt you if you want to scan every sub account in an instance. "Yes" or "y" will scan any other option will scan just the root account. 
+5. The script will beginn running. The run time will depend on if all sub accounts were selected and how many reports you have. 
+6. The script will print out a list of any reports last runs that ended in an error. 
+7. The script will print out a list of any reports that are still running. 
+8. The script will then alert you when it has finished and close.
+
+The script is provided as is with no warrenty yadda yadda yadda. 
