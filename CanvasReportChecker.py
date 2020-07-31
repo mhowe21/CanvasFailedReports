@@ -1,10 +1,9 @@
 import json
-#attempt to install requests if not found attempt to install it via pip
+# attempt to install requests if not found attempt to install it via pip
 try:
     import requests
 except ModuleNotFoundError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", "requests"])
-
 
 
 class userInputs():
@@ -102,12 +101,19 @@ class apiData():
             'Authorization': f'Bearer {self.token}',
         }
 
-        response = requests.request(
-            "GET", url, headers=headers, data=payload, files=files)
+        while(url != None):
+            response = requests.request(
+                "GET", url, headers=headers, data=payload, files=files)
+            accountJData = response.json()
 
-        accountJData = response.json()
-        for items in accountJData:
-            accountsList.append(items["id"])
+            for items in accountJData:
+                accountsList.append(items["id"])
+            # in the event the account has more then 100 sub accounts continue to gather sub account IDs
+            try:
+                rLinks = response.links["next"]["url"]
+                url = rLinks
+            except KeyError:
+                url = None
 
         return accountsList
 
